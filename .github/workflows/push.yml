@@ -1,0 +1,16 @@
+name: Feed to social Media
+on:
+  workflow_dispatch:
+
+jobs:
+  IW2Discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: IW To Discord
+        uses: lwojcik/github-action-feed-to-social-media@v2
+        with:
+          feedUrl: 'https://podcast.themezaofficial.com/feed'
+          newestItemStrategy: 'latestDate'
+          postFormat: "New episode!\n{title}\n\n{link}"
+          discordEnable: true
+          discordWebhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
